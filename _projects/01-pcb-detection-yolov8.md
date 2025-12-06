@@ -2,7 +2,7 @@
 layout: page
 title: "Real-Time PCB Component Detection Using YOLOv8"
 description: "A deep-learning perception system for detecting and classifying PCB components with YOLOv8."
-img: assets/img/projects/pcb/main.jpg
+img: assets/img/projects/pcb/predictions/n_1.png
 importance: 1
 category: computer_vision
 related_publications: false
@@ -11,96 +11,94 @@ related_publications: false
 ### Overview
 
 This project presents a **real-time computer-vision system** for detecting electronic components on printed circuit boards (PCBs).  
-Using the **YOLOv8** family of models (n, s, m), the system performs multi-class object detection and labeling with strong accuracy and fast inference — enabling automated PCB inspection for manufacturing and repair.
-
-The work focuses on training, evaluating, and comparing YOLOv8 variants on a curated subset of the **RF100 PCB dataset**.
+Using **YOLOv8n, YOLOv8s, and YOLOv8m**, the system performs fast multi-class detection suitable for automated inspection.
 
 ---
 
-### Key Contributions
-- Built a complete data preprocessing & augmentation pipeline (Mosaic, MixUp, geometric transforms).
-- Trained YOLOv8n, YOLOv8s, and YOLOv8m under identical hyperparameters.
-- Conducted detailed performance benchmarking: Precision, Recall, F1, mAP@0.5.
-- Designed and deployed a backend using **FastAPI** for real-time detection via web or API.
-- Implemented model export to ONNX for edge deployment.
+## 🔵 Prediction Examples (All Models & All Images)
 
----
-
-### Results Summary
+### **YOLOv8n Predictions**
 
 <div class="row">
-  <div class="col-sm mt-3 mt-md-0">
-      {% include figure.liquid loading="eager" path="assets/img/projects/pcb/results1.jpg" title="Detection Example" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/n_1.png" title="YOLOv8n Prediction 1" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
-      {% include figure.liquid loading="eager" path="assets/img/projects/pcb/results2.jpg" title="YOLOv8 Prediction Output" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/n_2.png" title="YOLOv8n Prediction 2" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
-      {% include figure.liquid loading="eager" path="assets/img/projects/pcb/results3.jpg" title="Confidence Heatmap" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-
-<div class="caption">
-Example detection outputs from the trained YOLOv8 models on PCB samples.
 </div>
 
 ---
 
-### Quantitative Performance
+### **YOLOv8s Predictions**
 
-YOLOv8s achieved the best overall performance:
-
-- **Precision:** 0.859  
-- **Recall:** 0.678  
-- **mAP@0.5:** 0.7305  
-- Best balance between inference speed and accuracy.
-
-YOLOv8m produced the highest localization accuracy, while YOLOv8n offered extremely fast inference suitable for embedded devices.
+<div class="row">
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/s_1.png" title="YOLOv8s Prediction 1" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/s_2.png" title="YOLOv8s Prediction 2" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
 
 ---
 
-### Training Curves
+### **YOLOv8m Predictions**
+
+<div class="row">
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/m_1.png" title="YOLOv8m Prediction 1" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/m_2.png" title="YOLOv8m Prediction 2" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+---
+
+## 🔵 Confusion Matrices
+
+<div class="row">
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/confusion/n_confusion.png" title="YOLOv8n Confusion Matrix" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/confusion/s_confusion.png" title="YOLOv8s Confusion Matrix" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/confusion/m_confusion.png" title="YOLOv8m Confusion Matrix" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+---
+
+## 🔵 F1–Confidence Curves
+
+<div class="row">
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/curves/n_f1.png" title="YOLOv8n F1 Curve" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/curves/s_f1.png" title="YOLOv8s F1 Curve" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/curves/m_f1.png" title="YOLOv8m F1 Curve" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+---
+
+## 🔵 Combined Metrics (mAP, Fitness)
 
 <div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-      {% include figure.liquid path="assets/img/projects/pcb/loss_curve.jpg" title="Training Loss Curve" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-      {% include figure.liquid path="assets/img/projects/pcb/map_curve.jpg" title="mAP Curve" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm-8 mt-3">
+    {% include figure.liquid path="assets/img/projects/pcb/curves/metrics.png" title="mAP & Fitness Metrics" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-
-<div class="caption">
-Training performance curves showing loss reduction and mAP improvement over epochs.
-</div>
-
----
-
-### Robotics Relevance
-
-This project demonstrates robotics perception skills:
-
-- Real-time object detection for complex scenes  
-- Dataset engineering and augmentation  
-- Optimization for inference speed  
-- Vision pipeline deployment (FastAPI / ONNX)  
-- Practical understanding of bounding box regression and feature extraction  
-
-These skills translate directly to robotic manipulation, inspection, scene understanding, and autonomous navigation.
 
 ---
 
 ### Tools & Technologies
-- **Python**, **PyTorch**, **Ultralytics YOLOv8**
-- **FastAPI**, **OpenCV**
-- **CUDA / GPU training**
-- **ONNX for deployment**
+Python • PyTorch • YOLOv8 • FastAPI • OpenCV • CUDA • ONNX
 
 ---
-
-### Links
-
-- **Thesis PDF:** *(add link or upload later)*  
-- **Source Code (optional):**  
-- **Demo Backend:** *(optional)*
-
