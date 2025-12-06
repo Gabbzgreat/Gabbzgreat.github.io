@@ -453,7 +453,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-real-time-pcb-component-detection-using-yolov8",
           title: 'Real-Time PCB Component Detection Using YOLOv8',
-          description: "A deep-learning perception system for detecting and classifying PCB components with YOLOv8.",
+          description: "A deep-learning perception system for detecting and classifying PCB components.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-project-2",
