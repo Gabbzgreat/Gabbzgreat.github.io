@@ -451,9 +451,9 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-project-1",
-          title: 'project 1',
-          description: "a project with a background image and giscus comments",
+          section: "News",},{id: "projects-real-time-pcb-component-detection-using-yolov8",
+          title: 'Real-Time PCB Component Detection Using YOLOv8',
+          description: "A deep-learning perception system for detecting and classifying PCB components on printed circuit boards.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-project-2",
