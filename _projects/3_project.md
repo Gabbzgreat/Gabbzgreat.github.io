@@ -2,9 +2,9 @@
 layout: page
 title: "PLC-Based Centrifuge Control System"
 description: "A state-machine driven automation system for controlling a laboratory centrifuge with safety logic and HMI integration."
-img: assets/img/projects/plc/hmi_running.png
+img: assets/img/projects/plc/flowchart.png
 importance: 3
-category: controls
+category: work
 ---
 
 ### Overview
