@@ -456,9 +456,9 @@ ninja.data = [{
           description: "A deep-learning perception system for detecting and classifying PCB components on printed circuit boards.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-project-2",
-          title: 'project 2',
-          description: "a project with a background image and giscus comments",
+            },},{id: "projects-dc-ac-energy-storing-full-bridge-power-converter",
+          title: 'DC–AC Energy-Storing Full-Bridge Power Converter',
+          description: "Design and simulation of a cascaded DC–DC + DC–AC converter with PI control, unipolar PWM, and 3 kW power delivery.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{id: "projects-project-3-with-very-long-name",
