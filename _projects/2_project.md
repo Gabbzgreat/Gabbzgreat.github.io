@@ -1,81 +1,98 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
+title: "DC–AC Energy-Storing Full-Bridge Power Converter"
+description: "Design and simulation of a cascaded DC–DC + DC–AC converter with PI control, unipolar PWM, and 3 kW power delivery."
+img: assets/img/projects/converter/system_overview.png
 importance: 2
 category: work
-giscus_comments: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Overview
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+This project implements a **two-stage power converter** consisting of a DC–DC boost converter and a DC–AC full-bridge inverter.  
+A cascaded PI control architecture regulates the DC-link voltage while a current-mode inverter delivers a clean sinusoidal AC output to the grid.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+The system was modeled and simulated in **PLECS/Simulink**, achieving the design requirement of **3 kW regulated output power** with stable current and voltage regulation.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+---
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+## System Architecture
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+A full schematic of the converter is shown below:
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+{% include figure.liquid path="assets/img/projects/converter/system_overview.png" title="Full DC–DC + DC–AC Converter Topology" class="img-fluid rounded z-depth-1" %}
 
-{% raw %}
+The design consists of:
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+- **Boost Converter (300 V → ~700 V DC-link)**  
+- **Cascaded PI control** (outer voltage loop, inner current loop)  
+- **Full-bridge inverter** driven by unipolar PWM  
+- **LCL output filtering** for grid-quality AC injection  
 
-{% endraw %}
+---
+
+## DC–DC Converter Control
+
+The DC–DC stage uses a cascaded control structure:
+
+{% include figure.liquid path="assets/img/projects/converter/boost_control.png" title="Cascaded PI Control for Boost Converter" class="img-fluid rounded z-depth-1" %}
+
+- The **outer voltage loop** maintains the DC-link at ~700 V  
+- The **inner current loop** ensures fast current dynamics  
+- A triangular-wave comparator generates the PWM duty cycle  
+
+This structure provides fast transient performance and excellent disturbance rejection.
+
+---
+
+## DC–DC Performance
+
+The converter was tested under dynamic changes in the voltage reference.  
+The inductor current and capacitor voltage track their references cleanly and without oscillation:
+
+{% include figure.liquid path="assets/img/projects/converter/boost_response.png" title="Boost Converter Response: Inductor Current and Output Voltage" class="img-fluid rounded z-depth-1" %}
+
+This confirms stable PI tuning and proper energy transfer into the DC-link capacitor.
+
+---
+
+## DC–AC Modulation Strategy
+
+The full-bridge inverter uses **unipolar PWM**, which reduces harmonic distortion and switching losses compared to bipolar control.
+
+{% include figure.liquid path="assets/img/projects/converter/unipolar_pwm.png" title="Unipolar PWM Gate Signal Generation" class="img-fluid rounded z-depth-1" %}
+
+Two carrier comparisons produce four complementary gating signals, enabling smoother AC output waveform shaping.
+
+---
+
+## AC Output Performance
+
+The regulated AC current and grid voltage demonstrate correct sinusoidal operation and proper phase alignment:
+
+{% include figure.liquid path="assets/img/projects/converter/ac_output.png" title="AC Output Current and Grid Voltage" class="img-fluid rounded z-depth-1" %}
+
+This verifies that the full-bridge inverter and LC filters generate clean output suitable for grid connection.
+
+---
+
+## Power Delivery
+
+The complete converter meets the **3 kW power requirement**, stabilizing at approximately **2980–3000 W**:
+
+{% include figure.liquid path="assets/img/projects/converter/power_output.png" title="Output Power of the Full Converter System" class="img-fluid rounded z-depth-1" %}
+
+This confirms that both the DC–DC and DC–AC stages work together efficiently under load.
+
+---
+
+## Tools & Technologies
+
+- PLECS / Simulink  
+- Cascaded PI control design  
+- PWM modulation strategies  
+- Power electronics modeling  
+- Signal analysis and controller validation  
+
+---
+
