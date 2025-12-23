@@ -97,16 +97,16 @@ The **F1-Confidence Curves** illustrate the precision-recall balance. The **YOLO
 
 ---
 
-## 🚀 Future Research Proposal
+## 🤖 Future Research Proposal: From "Seeing" to "Acting"
 
-While this study established a baseline for supervised detection, significant challenges remain for deployment in dynamic manufacturing environments. My proposed future research extends this work in two key directions:
+While this project successfully demonstrated *perception* (detecting components), my research goal is to bridge the gap between *perception* and *robotic actuation* (building robots that physically interact with these components).
 
-1.  **Unsupervised Domain Adaptation:** Addressing the performance drop when models trained on one PCB style are applied to a different manufacturer's board (domain shift) without manual retraining.
-2.  **Few-Shot Defect Detection:** Investigating generative techniques (GANs/Diffusion) to synthesize training data for rare defects, solving the class imbalance problem identified in the confusion matrices above.
+My proposed MPhil research focuses on **High-Speed Visual Servoing for Micro-Manipulation**:
 
-This work serves as the foundation for my proposed **MPhil research into Robust Computer Vision for Industrial Robotics.**
+1.  **6-DoF Visual Servoing:** Integrating this YOLOv8 inference stream directly into a robot arm's control loop (e.g., inverse kinematics) to enable real-time tracking and soldering of components on moving assembly lines.
+2.  **Active Perception:** researching algorithms where the robot autonomously moves its camera arm to resolve occlusions (e.g., "I can't see the capacitor clearly, so I will tilt my head 15 degrees"), turning a passive camera into an active robotic agent.
 
----
+This moves beyond simple "detection" and into **Cognitive Robotics**, where the vision system drives physical robotic behavior.
 
 ## Technologies & Methodologies
 
