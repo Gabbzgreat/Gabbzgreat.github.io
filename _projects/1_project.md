@@ -4,7 +4,7 @@ title: "Comparative Analysis of YOLOv8 Architectures for PCB Defect Detection"
 description: "A quantitative evaluation of lightweight vs. medium convolutional networks for real-time automated optical inspection (AOI)."
 img: assets/img/projects/pcb/predictions/n_1.png
 importance: 1
-category: research
+category: work
 ---
 
 ## 🔬 Research Abstract
