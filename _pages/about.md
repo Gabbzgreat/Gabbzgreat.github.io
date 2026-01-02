@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>B.Sc. Electrical Engineering</a>. Warsaw University of Technology (GPA 5.0/5.0).
+subtitle: <a href='#'>B.Sc. Electrical Engineering</a>. Warsaw University of Technology (GPA 4.53/5.0).
 
 profile:
   align: right
