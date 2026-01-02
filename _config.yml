@@ -23,6 +23,16 @@ impressum_path: # set to path to include impressum link in the footer, use the s
 back_to_top: true # set to false to disable the back to top button
 
 # -----------------------------------------------------------------------------
+# Social Integration (The icons will work now!)
+# -----------------------------------------------------------------------------
+github_username: Gabbzgreat
+linkedin_username: mike-ndlovu-bbb843251  # <--- Added your LinkedIn
+scholar_userid:      # Add Google Scholar ID here if you have one
+twitter_username:    # Leave blank
+
+last_updated: false
+
+# -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
 
