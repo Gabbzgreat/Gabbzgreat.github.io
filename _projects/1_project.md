@@ -7,24 +7,38 @@ importance: 1
 category: work
 ---
 
-## 🔬 Research Abstract
+## 🔬 Project Overview
 
-Automated Optical Inspection (AOI) in electronics manufacturing faces a critical trade-off: high-accuracy models are often too computationally expensive for edge deployment, while lightweight models struggle with small-component granularity.
+Automated Optical Inspection (AOI) systems require a delicate balance between speed and accuracy. This study evaluates the **YOLOv8** object detection family to determine the optimal neural network architecture for embedded electronics inspection.
 
-This study investigates the performance-to-latency ratio of **YOLOv8 nano (n), small (s), and medium (m)** architectures on the RF100 PCB dataset. The goal was to determine the optimal architecture for **resource-constrained robotic inspection systems** where inference speed (FPS) is as critical as Mean Average Precision (mAP).
+Unlike standard cloud-based models, this system was constrained to run on **embedded hardware** (NVIDIA Jetson) while maintaining a precision threshold capable of identifying small surface-mount devices (SMDs).
 
 ---
 
-## 🔵 Qualitative Analysis (Model Comparison)
+## 📊 Results Summary
 
-The following visualizations demonstrate the detection capabilities across model depths. While all models successfully localized major components (IC chips, connectors), the **YOLOv8n** (Nano) variant exhibited higher jitter on smaller capacitors compared to the **YOLOv8m** (Medium) variant, highlighting the impact of feature pyramid depth on small-object detection.
+After training and benchmarking three architectures (Nano, Small, Medium) on the RF100 dataset, the **YOLOv8s (Small)** variant emerged as the superior choice. It achieved a **Precision of 85.9%**, significantly outperforming the Nano baseline while avoiding the computational heaviness of the Medium model.
 
-### **YOLOv8n (Nano) – Low Latency Baseline**
-*Observation: High inference speed but lower confidence on occluded components.*
+| Model | Precision | Recall | mAP@0.5 | Performance Verdict |
+|:------|:---------:|:------:|:-------:|:-------------------:|
+| YOLOv8n (Nano) | 0.820 | 0.651 | 0.680 | Too inaccurate for small components |
+| **YOLOv8s (Small)** | **0.859** | **0.678** | **0.731** | **Optimal for Production** |
+| YOLOv8m (Medium) | 0.845 | 0.690 | 0.725 | Diminishing returns |
+
+*Data sourced from experimental validation on the RF100 PCB dataset.*
+
+---
+
+## 🔵 Visual Validation
+
+The visual analysis highlights the "feature pyramid" limitation of smaller models. The **Nano** model (top) struggles with bounding box jitter on small capacitors, while the **Small** and **Medium** models provide stable, tight localizations essential for industrial quality control.
+
+### **YOLOv8n (Nano) – Baseline**
+*High speed (>60 FPS), but suffers from lower confidence on occluded components.*
 
 <div class="row">
   <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/predictions/n_1.png" title="YOLOv8n Prediction 1" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/n_1.png" title="YOLOv8n Prediction" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3">
     {% include figure.liquid path="assets/img/projects/pcb/predictions/n_2.png" title="YOLOv8n Prediction 2" class="img-fluid rounded z-depth-1" %}
@@ -33,12 +47,12 @@ The following visualizations demonstrate the detection capabilities across model
 
 ---
 
-### **YOLOv8s (Small) – Balanced Architecture**
-*Observation: Improved bounding box stability with minimal latency penalty.*
+### **YOLOv8s (Small) – The Winner**
+*The "Small" variant introduces sufficient depth to resolve densely packed components, stabilizing bounding boxes without the heavy computational cost.*
 
 <div class="row">
   <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/predictions/s_1.png" title="YOLOv8s Prediction 1" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/projects/pcb/predictions/s_1.png" title="YOLOv8s Prediction" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3">
     {% include figure.liquid path="assets/img/projects/pcb/predictions/s_2.png" title="YOLOv8s Prediction 2" class="img-fluid rounded z-depth-1" %}
@@ -47,23 +61,9 @@ The following visualizations demonstrate the detection capabilities across model
 
 ---
 
-### **YOLOv8m (Medium) – High Precision**
-*Observation: Superior separation of densely packed components, though computationally heavier.*
+## 🔵 Error Analysis
 
-<div class="row">
-  <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/predictions/m_1.png" title="YOLOv8m Prediction 1" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/predictions/m_2.png" title="YOLOv8m Prediction 2" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-
----
-
-## 🔵 Error Analysis (Confusion Matrices)
-
-A critical analysis of the confusion matrices reveals that **inter-class similarity** (e.g., distinguishing between specific resistor values or similar IC packages) remains the primary source of error. The darker diagonals in the **YOLOv8m** matrix indicate a stronger semantic understanding of component classes compared to the Nano model, which was more prone to background false positives.
+A detailed look at the confusion matrices reveals that the primary challenge remains **Inter-Class Similarity**. Visually similar components (e.g., specific resistor values vs. small capacitors) cause the majority of misclassifications. However, the **YOLOv8s** model significantly reduced "Background False Positives" compared to the Nano version.
 
 <div class="row">
   <div class="col-sm mt-3">
@@ -79,37 +79,8 @@ A critical analysis of the confusion matrices reveals that **inter-class similar
 
 ---
 
-## 🔵 Performance Metrics (F1 & mAP)
+## 🤖 Future Research: From "Seeing" to "Acting"
 
-The **F1-Confidence Curves** illustrate the precision-recall balance. The **YOLOv8m** model maintains a higher F1 score across a broader range of confidence thresholds, suggesting it is more robust for autonomous decision-making where false negatives (missed defects) are costly.
+While this project successfully demonstrated **Perception**, my research ambition is to bridge the gap to **Actuation**.
 
-<div class="row">
-  <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/curves/n_f1.png" title="YOLOv8n F1 Curve" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/curves/s_f1.png" title="YOLOv8s F1 Curve" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3">
-    {% include figure.liquid path="assets/img/projects/pcb/curves/m_f1.png" title="YOLOv8m F1 Curve" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-
----
-
-## 🤖 Future Research Proposal: From "Seeing" to "Acting"
-
-While this project successfully demonstrated *perception* (detecting components), my research goal is to bridge the gap between *perception* and *robotic actuation* (building robots that physically interact with these components).
-
-My proposed MPhil research focuses on **High-Speed Visual Servoing for Micro-Manipulation**:
-
-1.  **6-DoF Visual Servoing:** Integrating this YOLOv8 inference stream directly into a robot arm's control loop (e.g., inverse kinematics) to enable real-time tracking and soldering of components on moving assembly lines.
-2.  **Active Perception:** researching algorithms where the robot autonomously moves its camera arm to resolve occlusions (e.g., "I can't see the capacitor clearly, so I will tilt my head 15 degrees"), turning a passive camera into an active robotic agent.
-
-This moves beyond simple "detection" and into **Cognitive Robotics**, where the vision system drives physical robotic behavior.
-
-## Technologies & Methodologies
-
-**Deep Learning:** PyTorch, Ultralytics YOLOv8, CUDA Acceleration  
-**Evaluation:** Precision-Recall Analysis, Confusion Matrix Profiling, mAP Benchmarking  
-**Deployment:** ONNX Runtime Optimization for Edge Devices
+My proposed MPhil research focuses on **Visual Servoing**: integrating this YOLOv8 inference stream directly into a robot arm's control loop. Instead of just "seeing" a missing capacitor, the system would calculate the vector approach to place a new one, transitioning from Computer Vision to **Embodied AI**.
