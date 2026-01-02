@@ -6,31 +6,33 @@ title: Mike Ndlovu | Robotics & AI
 first_name: Mike
 middle_name: ""
 last_name: Ndlovu
-email: mikendlovu771@gmail.com   # <--- THIS WAS MISSING
+email: mikendlovu771@gmail.com
 contact_note: >
   Open for MPhil/PhD opportunities in Embodied AI and Visual Servoing
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
+description: >
   Electrical Engineer & Robotics Researcher. Specializing in Deep Learning, Computer Vision, and Real-Time Control.
 footer_text: "Copyright © 2026 Mike Ndlovu."
-keywords: robotics, ai, computer vision, control systems, yolo, engineering # add your own keywords or leave empty
-lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 🤖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+keywords: robotics, ai, computer vision, control systems, yolo, engineering
+lang: en
+icon: 🤖
 
-url: https://Gabbzgreat.github.io # the base hostname & protocol for your site
-baseurl: "" # the subpath of your site, e.g. /blog/. Leave blank for root
-last_updated: false # set to true if you want to display last updated in the footer
-impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
-back_to_top: true # set to false to disable the back to top button
+url: https://Gabbzgreat.github.io
+baseurl: ""
 
 # -----------------------------------------------------------------------------
-# Social Integration (The icons will work now!)
+# Social Integration
 # -----------------------------------------------------------------------------
 github_username: Gabbzgreat
-linkedin_username: mike-ndlovu-bbb843251  # <--- Added your LinkedIn
-scholar_userid:      # Add Google Scholar ID here if you have one
-twitter_username:    # Leave blank
+linkedin_username: mike-ndlovu-bbb843251
+scholar_userid:
+twitter_username:
 
+# -----------------------------------------------------------------------------
+# Configuration
+# -----------------------------------------------------------------------------
 last_updated: false
+impressum_path:
+back_to_top: true
 
 # -----------------------------------------------------------------------------
 # Theme
