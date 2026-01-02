@@ -424,11 +424,6 @@ ninja.data = [{
           description: "A state-machine driven automation system for controlling a laboratory centrifuge with safety logic and HMI integration.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
-            },},{id: "projects-project-4",
-          title: 'project 4',
-          description: "another without an image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
             },},{id: "projects-project-5",
           title: 'project 5',
           description: "a project with a background image",
