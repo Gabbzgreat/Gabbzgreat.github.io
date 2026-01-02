@@ -14,7 +14,7 @@ profile:
 news: false
 latest_posts: false
 selected_papers: false
-social: false  # <--- We turn this OFF to use the manual buttons below
+social: false  # <--- CRITICAL: This turns off the "Einstein" icons
 ---
 
 I am an Electrical Engineering student entering the field of **Embodied AI**. My research focuses on bridging the gap between high-level Computer Vision (Deep Learning) and low-level Real-Time Control.
