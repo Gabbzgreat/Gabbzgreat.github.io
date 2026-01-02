@@ -10,7 +10,7 @@ contact_note: >
   Open for MPhil/PhD opportunities in Embodied AI and Visual Servoing
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Electrical Engineer & Robotics Researcher. Specializing in Deep Learning, Computer Vision, and Real-Time Control.
-footer_text: > Copyright © 2026 Mike Ndlovu.
+footer_text: "Copyright © 2026 Mike Ndlovu."
 keywords: robotics, ai, computer vision, control systems, yolo, engineering # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🤖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
