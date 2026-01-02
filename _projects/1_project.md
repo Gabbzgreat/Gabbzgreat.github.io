@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Comparative Analysis of YOLOv8 Architectures for PCB Defect Detection"
-description: "A quantitative evaluation of lightweight vs. medium convolutional networks for real-time automated optical inspection (AOI)."
+title: "Comparative Analysis of YOLOv8 Architectures for PCB Component Recognition"
+description: "A quantitative evaluation of lightweight vs. medium convolutional networks for real-time automated electronic component identification."
 img: assets/img/projects/pcb/predictions/n_1.png
 importance: 1
 category: work
@@ -9,15 +9,15 @@ category: work
 
 ## 🔬 Project Overview
 
-Automated Optical Inspection (AOI) in electronics manufacturing faces a critical optimization problem: maximizing defect detection accuracy while minimizing inference latency. This study investigates the **YOLOv8** object detection family to determine the optimal neural network architecture for **resource-constrained industrial inspection**.
+In the automated assembly of printed circuit boards (PCBs), accurate **Component Recognition** is the prerequisite for effective Quality Control. Before a system can identify a "defect" (like a missing or damaged part), it must first correctly identify and map every component on the board.
 
-Using the **RF100 PCB dataset**, this project benchmarked three model scales (Nano, Small, Medium) to identify an architecture capable of detecting small surface-mount devices (SMDs) with high precision, suitable for deployment on embedded systems where computational resources are limited.
+This study investigates the **YOLOv8** object detection family to determine the optimal neural network architecture for **real-time component identification** in resource-constrained environments. Unlike standard defect detection systems that look for soldering faults, this research focuses on the fundamental task of **classifying and localizing** densely packed components (ICs, Capacitors, Diodes) with high precision.
 
 ---
 
 ## 📊 Results Summary
 
-Experimental validation revealed that the **YOLOv8s (Small)** variant offers the optimal trade-off for industrial application. It achieved a **Precision of 85.9%**, significantly outperforming the Nano baseline while maintaining a computational footprint small enough for real-time inference.
+Using the **RF100 PCB dataset**, this project benchmarked three model scales (Nano, Small, Medium). The **YOLOv8s (Small)** variant emerged as the optimal architecture for industrial application. It achieved a **Precision of 85.9%**, significantly outperforming the Nano baseline while maintaining a computational footprint small enough for real-time inference.
 
 | Model Variant | Precision | Recall | mAP@0.5 | Performance Verdict |
 |:-------------|:----------:|:------:|:-------:|:-------------------:|
@@ -31,7 +31,7 @@ Experimental validation revealed that the **YOLOv8s (Small)** variant offers the
 
 ## 🔵 Visual Validation & Architecture Analysis
 
-The visual analysis highlights the impact of **Feature Pyramid Network (FPN)** depth. The Nano model, while fast, lacks the feature extraction depth required to consistently resolve small capacitors against complex board backgrounds. The Small model introduces sufficient depth to stabilize bounding boxes without the massive parameter increase of the Medium model.
+The visual analysis highlights the impact of **Feature Pyramid Network (FPN)** depth on component separation. The Nano model, while fast, lacks the feature extraction depth required to consistently resolve small capacitors against complex board backgrounds. The Small model introduces sufficient depth to stabilize bounding boxes without the massive parameter increase of the Medium model.
 
 ### **YOLOv8n (Nano) – The Efficiency Baseline**
 *Observation: While suitable for high-speed screening (>60 FPS theoretical), the Nano model exhibits lower confidence scores and bounding box jitter on occluded components.*
@@ -48,7 +48,7 @@ The visual analysis highlights the impact of **Feature Pyramid Network (FPN)** d
 ---
 
 ### **YOLOv8s (Small) – The Optimal Candidate**
-*Observation: The "Small" variant successfully resolves densely packed components. The improved recall (0.678) ensures fewer missed defects compared to the Nano variant, making it the preferred choice for Quality Assurance.*
+*Observation: The "Small" variant successfully resolves densely packed components. The improved recall (0.678) ensures fewer missed components compared to the Nano variant, making it the preferred choice for mapping board layouts.*
 
 <div class="row">
   <div class="col-sm mt-3">
@@ -63,7 +63,7 @@ The visual analysis highlights the impact of **Feature Pyramid Network (FPN)** d
 
 ## 🔵 Error Analysis
 
-A detailed look at the confusion matrices reveals that the primary challenge remains **Inter-Class Similarity**. Visually similar components (e.g., distinguishing between specific Resistor values or similar IC packages) account for the majority of classification errors. However, the **YOLOv8s** model significantly reduced "Background False Positives" compared to the Nano version, proving it has a superior semantic understanding of the PCB structure.
+A detailed look at the confusion matrices reveals that the primary challenge remains **Inter-Class Similarity**. Visually similar components (e.g., distinguishing between specific Diode packages or similar ICs) account for the majority of classification errors. However, the **YOLOv8s** model significantly reduced "Background False Positives" compared to the Nano version, proving it has a superior semantic understanding of the PCB structure.
 
 <div class="row">
   <div class="col-sm mt-3">
@@ -79,8 +79,8 @@ A detailed look at the confusion matrices reveals that the primary challenge rem
 
 ---
 
-## 🤖 Future Research: From "Seeing" to "Acting"
+## 🤖 Future Research: From "Recognition" to "Actuation"
 
-While this project successfully demonstrated **Perception** (detecting defects), my research ambition is to bridge the gap to **Actuation** (robotic intervention).
+While this project successfully demonstrated **Visual Perception** (identifying components), my research ambition is to bridge the gap to **Robotic Actuation**.
 
-My proposed MPhil/PhD research focuses on **Visual Servoing**: integrating this YOLOv8 inference stream directly into a robot arm's control loop. Instead of just "seeing" a missing capacitor, the system would calculate the kinematic trajectory to place a new one, transitioning from Computer Vision to **Embodied AI**.
+My proposed MPhil/PhD research focuses on **Visual Servoing**: integrating this YOLOv8 inference stream directly into a robot arm's control loop. Instead of just "recognizing" a capacitor, the system would use that coordinate data to calculate the kinematic trajectory to physically grasp or solder it, transitioning from Computer Vision to **Embodied AI**.
