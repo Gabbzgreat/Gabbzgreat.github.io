@@ -6,6 +6,7 @@ title: Mike Ndlovu | Robotics & AI
 first_name: Mike
 middle_name: ""
 last_name: Ndlovu
+email: mikendlovu771@gmail.com   # <--- THIS WAS MISSING
 contact_note: >
   Open for MPhil/PhD opportunities in Embodied AI and Visual Servoing
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
