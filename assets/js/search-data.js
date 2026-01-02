@@ -409,9 +409,9 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-comparative-analysis-of-yolov8-architectures-for-pcb-defect-detection",
-          title: 'Comparative Analysis of YOLOv8 Architectures for PCB Defect Detection',
-          description: "A quantitative evaluation of lightweight vs. medium convolutional networks for real-time automated optical inspection (AOI).",
+          section: "News",},{id: "projects-comparative-analysis-of-yolov8-architectures-for-pcb-component-recognition",
+          title: 'Comparative Analysis of YOLOv8 Architectures for PCB Component Recognition',
+          description: "A quantitative evaluation of lightweight vs. medium convolutional networks for real-time automated electronic component identification.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-dc-ac-energy-storing-full-bridge-power-converter",
