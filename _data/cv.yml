@@ -17,7 +17,7 @@
       institution: Warsaw University of Technology
       year: 2022 - 2026 (Expected)
       description:
-        - "Current GPA: 5.0/5.0 (Pending Final Defense)."
+        - "Current GPA: 4.53/5.0."
         - "Awarded Rector's Scholarship for Academic Excellence (2023-2024)."
         - "Focus: Control Systems, Embedded Solutions, and Computer Vision."
 
@@ -35,11 +35,12 @@
 - title: Selected Projects
   type: time_table
   contents:
-    - title: Real-Time PCB Inspection (Bachelor's Thesis)
+    - title: Application of YOLO Networks for Electronic Component Recognition (Thesis)
       year: 2025
       description:
-        - "Implemented YOLOv8 on edge hardware for real-time defect detection."
-        - "Achieved 89.2% precision and deployed a lightweight UI for operator testing."
+        - "Investigated YOLOv8 architectures (n, s, m) for automatic PCB component recognition."
+        - "Achieved 85.9% Precision and 0.73 mAP@0.5 using YOLOv8s with Mosaic and MixUp augmentation."
+        - "Deployed an end-to-end inference pipeline with a Gradio user interface for operator interaction."
     - title: Centrifuge Control System
       year: 2024
       description:
@@ -54,7 +55,7 @@
   contents:
     - title: Programming & AI
       items:
-        - Python (Flask, FastAPI, PyTorch, YOLOv8)
+        - Python (Flask, Gradio, PyTorch, YOLOv8)
         - C / C++ (Embedded)
         - MATLAB / Simulink
     - title: Engineering & Automation
